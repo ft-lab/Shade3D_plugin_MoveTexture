@@ -12,13 +12,17 @@ UVマッピング用の「移動テクスチャ　(UV)」と、
 
 サンプルshdはver.16の機能を使用しているため、ver.16でないと正しくレンダリングできません。
 
-## ソースのビルド
+## プラグインバイナリ
+以下にプラグインのビルド済みのものを置いています。  
 
+https://github.com/ft-lab/Shade3D_plugin_MoveTexture/releases
+
+## ソースのビルド (開発向け)
 WindowsはVisual Studio 2013を使用。  
 MacはXcode 6.4を使用。  
 Shade3D Plugin SDK ver.15.1が必要です ( https://shade3d.jp/community/sdn/sdk.html )。  
 
-## ビルド方法
+## ビルド方法 (開発向け)
 
 Shade3D Plugin SDK ver.15.1をダウンロード。  
 Shade3D_plugin_MoveTextureでダウンロードしたソースのMoveTextureディレクトリを、Shade3D Plugin SDKのplugin_projectsディレクトリ内に配置。  
