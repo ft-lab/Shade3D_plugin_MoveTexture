@@ -90,7 +90,7 @@ https://github.com/ft-lab/Shade3D_plugin_MoveTexture/tree/master/samples
 表面材質のマッピングレイヤで「移動テクスチャ　(ソリッド)」を選択すると、雲模様のソリッドテクスチャ用レイヤが指定されます。　　
 <img src="https://github.com/ft-lab/Shade3D_plugin_MoveTexture/blob/master/wiki_images/mapping_layer_texture_solid.png"/>　　
 
-「位置&サイズ」タブの「サイズ」「位置」の入力が使用できます。これにより、多様性を出します。  
+「位置&サイズ」タブの「サイズ」「位置」の入力が使用できます。これにより、複数レイヤを重ねる場合の多様性を出します。  
 レイヤの色、「拡散反射」「バンプ」などの種類の切り替えと、「適用率」が使えます。  
 「その他」ボタンを押すと、設定ダイアログボックスが開きます。  
 「オクターブ」は、ノイズのソリッドテクスチャの重ね合わせの数です(1-16)。これが大きいと細かいところまで表現されます。  
