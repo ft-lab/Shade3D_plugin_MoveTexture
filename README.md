@@ -20,13 +20,13 @@ https://github.com/ft-lab/Shade3D_plugin_MoveTexture/tree/master/samples
 <img src="https://github.com/ft-lab/Shade3D_plugin_MoveTexture/blob/master/wiki_images/MoveTexture_sample1_image.jpg"/>
 
 ## MoveTexture_fire.shd
-「移動テクスチャ　(ソリッド)」を表面材質のマッピングレイヤに割り当てて、アニメーションレンダリングで移動させるサンプルシーンです。　　
-複数を重ね合わせることで炎のような表現を行っています。
+「移動テクスチャ　(ソリッド)」を表面材質のマッピングレイヤに割り当てて、アニメーションレンダリングで移動させるサンプルシーンです。  
+複数を重ね合わせることで炎のような表現を行っています。  
 <img src="https://github.com/ft-lab/Shade3D_plugin_MoveTexture/blob/master/wiki_images/MoveTexture_fire_image.jpg"/>
 
 ## MoveTexture_water.shd
-「移動テクスチャ　(UV)」を表面材質のマッピングレイヤに割り当てて、アニメーションレンダリングで移動させるサンプルシーンです。　　
-拡散反射とバンプの複数を重ね合わせることで水の流れのような表現を行っています。
+「移動テクスチャ　(UV)」を表面材質のマッピングレイヤに割り当てて、アニメーションレンダリングで移動させるサンプルシーンです。  
+拡散反射とバンプの複数を重ね合わせることで水の流れのような表現を行っています。  
 <img src="https://github.com/ft-lab/Shade3D_plugin_MoveTexture/blob/master/wiki_images/MoveTexture_water_image.jpg"/>
 
 # 使い方
