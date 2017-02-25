@@ -66,11 +66,11 @@ void CUVTextureShaderInterface::shade (void *)
 	}
 
 	// オフセット分を加算.
-	uv += data.offsetV;
+	uv += -data.offsetV;
 
 	// 移動量分を加算.
 	if (!sx::zero(m_frameRate)) {
-		uv += (data.moveV * m_currentFrame) / (float)m_frameRate;
+		uv += (-data.moveV * m_currentFrame) / (float)m_frameRate;
 	}
 
 	// 反復回数を考慮.
@@ -119,11 +119,11 @@ void CUVTextureShaderInterface::bump (void*)
 	}
 
 	// オフセット分を加算.
-	uv += data.offsetV;
+	uv += -data.offsetV;
 
 	// 移動量分を加算.
 	if (!sx::zero(m_frameRate)) {
-		uv += (data.moveV * m_currentFrame) / (float)m_frameRate;
+		uv += (-data.moveV * m_currentFrame) / (float)m_frameRate;
 	}
 
 	// 反復回数を考慮.

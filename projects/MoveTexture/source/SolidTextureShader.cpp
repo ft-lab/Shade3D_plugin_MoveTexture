@@ -59,7 +59,7 @@ void CSolidTextureShaderInterface::shade (void *)
 
 	// 移動量分を加算.
 	if (!sx::zero(m_frameRate)) {
-		p2 += ((data.moveV * m_currentFrame) / (float)m_frameRate) * m_solidScaleV;
+		p2 += ((-data.moveV * m_currentFrame) / (float)m_frameRate) * m_solidScaleV;
 	}
 
 	const float eVal = turbulence1(p2 * 10.0f, data.octaves);
@@ -88,7 +88,7 @@ void CSolidTextureShaderInterface::bump (void*)
 
 	// 移動量分を加算.
 	if (!sx::zero(m_frameRate)) {
-		p2 += ((data.moveV * m_currentFrame) / (float)m_frameRate) * m_solidScaleV;
+		p2 += ((-data.moveV * m_currentFrame) / (float)m_frameRate) * m_solidScaleV;
 	}
 
 	const float scaleV1 = 1.0f;
