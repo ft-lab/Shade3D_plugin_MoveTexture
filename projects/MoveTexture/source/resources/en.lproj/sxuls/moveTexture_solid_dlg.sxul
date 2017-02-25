@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog default_button="true" title="Move Texture (Solid)">
+	<vbox>
+		<group label="Solid">
+			<vbox>
+				<int id="101" label="Octaves (1-16)" />
+			</vbox>
+		</group>
+		<vec3 id="201" label="Amount of movement" unit="Local Coordinate/Second" />
+	</vbox>
+</dialog>

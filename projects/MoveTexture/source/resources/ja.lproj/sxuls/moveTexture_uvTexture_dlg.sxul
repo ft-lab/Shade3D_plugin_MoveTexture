@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog default_button="true" title="移動テクスチャ (UV)">
+	<vbox>
+		<group label="イメージ">
+			<vbox>
+				<selection id="101" label="UV : |UV1|UV2" />
+				<group label="反復">
+					<hbox>
+						<int id="102" label="横" />
+						<int id="103" label="縦" />
+					</hbox>
+				</group>
+				<bool id="104" label="色反転" />
+				<vec2 id="105" label="UVオフセット" />
+			</vbox>
+		</group>
+		<vec2 id="201" label="UV移動量" unit="UV座標/秒" />
+	</vbox>
+</dialog>

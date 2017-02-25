@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog default_button="true" title="移動テクスチャ (ソリッド)">
+	<vbox>
+		<group label="ソリッド">
+			<vbox>
+				<int id="101" label="オクターブ (1-16)" />
+			</vbox>
+		</group>
+		<vec3 id="201" label="移動量" unit="ローカル座標/秒" />
+	</vbox>
+</dialog>

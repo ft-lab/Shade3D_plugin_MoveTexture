@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog default_button="true" title="Move Texture (UV)">
+	<vbox>
+		<group label="Image">
+			<vbox>
+				<selection id="101" label="UV : |UV1|UV2" />
+				<group label="Repeat">
+					<hbox>
+						<int id="102" label="Horizontal" />
+						<int id="103" label="Vertical" />
+					</hbox>
+				</group>
+				<bool id="104" label="Flip Color" />
+				<vec2 id="105" label="UV Offset" />
+			</vbox>
+		</group>
+		<vec2 id="201" label="UV Amount of movement" unit="UV Coordinate/Second" />
+	</vbox>
+</dialog>
