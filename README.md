@@ -1,3 +1,8 @@
+For English documentation please see below.  
+Sorry, I translated it into English with "Google Translate" so it may be difficult to read.  
+
+https://github.com/ft-lab/Shade3D_plugin_MoveTexture/blob/master/README_en.md
+
 # MoveTextureプラグイン for Shade3D
 アニメーションで移動するテクスチャ(UV、ソリッド)を表面材質のマッピングレイヤに割り当てるための、Shade3DのShaderプラグインです。  
 UVマッピング用の「移動テクスチャ　(UV)」と、  

@@ -1,6 +1,6 @@
-# MoveTexture Plugin for Shade3D
-
 I translate it using "Google Translate"...  
+
+# MoveTexture Plugin for Shade3D
 
 MoveTexture Plugin is Shade3D's Shader plugin for assigning animated texture (UV, solid) to surface material mapping layer.  
 As a Shader element of the mapping layer you can add "Move Texture (UV)" for UV mapping and "Move Texture (Solid)" of cloudy solid texture.  
