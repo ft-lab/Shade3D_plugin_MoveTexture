@@ -92,6 +92,11 @@ void StreamCtrl::SaveSolidTextureShaderData (sxsdk::stream_interface* stream, co
 		stream->write_int(data.octaves);
 		stream->write_vec3(data.moveV);
 
+		// ver.101.
+		stream->write_float(data.scaleHeight);
+		stream->write_float(data.scalePow);
+		stream->write_float(data.scaleValue);
+
 	} catch (...) { }
 }
 
@@ -111,6 +116,12 @@ bool StreamCtrl::LoadSolidTextureShaderData (sxsdk::stream_interface* stream, CM
 
 		stream->read_int(data.octaves);
 		stream->read_vec3(data.moveV);
+
+		if (iVersion >= MOVETEXTURE_SOLID_STREAM_VERSION_101) {
+			stream->read_float(data.scaleHeight);
+			stream->read_float(data.scalePow);
+			stream->read_float(data.scaleValue);
+		}
 
 		return true;
 	} catch (...) { }

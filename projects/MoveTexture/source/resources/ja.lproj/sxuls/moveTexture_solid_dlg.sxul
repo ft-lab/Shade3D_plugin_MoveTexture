@@ -7,5 +7,11 @@
 			</vbox>
 		</group>
 		<vec3 id="201" label="移動量" unit="ローカル座標/秒" />
+
+		<group label="スケール補正">
+			<float id="202" label="高さ" unit="mm" />
+			<float id="203" label="高さに向かう強さ(Pow)" />
+			<float id="204" label="スケール値" />
+		</group>
 	</vbox>
 </dialog>

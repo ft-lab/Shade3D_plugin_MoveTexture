@@ -9,6 +9,10 @@ enum
 {
 	dlg_octaves_id = 101,			// オクターブ.
 	dlg_moveV_id = 201,				// 移動量.
+
+	dlg_scale_height_id = 202,		// スケールの高さ.
+	dlg_scale_pow_id = 203,			// スケールの強さ.
+	dlg_scale_value_id = 204,		// スケール値.
 };
 
 CSolidTextureShaderInterface::CSolidTextureShaderInterface (sxsdk::shade_interface& _shade) : m_shade(_shade), sxsdk::shader_interface(_shade)
@@ -34,9 +38,38 @@ sxsdk::shader_info_base_class *CSolidTextureShaderInterface::new_shader_info (sx
 	return new ShaderInfoC(data);
 }
 
+/**
+ * pの高さにより、乗算するスケール値を取得.
+ */
+float CSolidTextureShaderInterface::m_getScale (const sxsdk::vec3& p, const CMoveTextureSolidShaderData& data)
+{
+	// p.yにより、拡大率を変える.
+	float scale = 10.0f;
+	if (data.scaleValue != 1.0f) {
+		const float fMin = (float)(1e-3);
+		if (p.y >= 0.0f && p.y < data.scaleHeight) {
+			float fV = std::pow(p.y / data.scaleHeight, data.scalePow);
+			scale /= std::max(fMin, 1.0f * (1.0f - fV) + (data.scaleValue * fV));
+		} else if (p.y >= data.scaleHeight) {
+			scale /= std::max(fMin, data.scaleValue);
+		}
+	}
+	return scale;
+}
+
 float CSolidTextureShaderInterface::evaluate (const sx::vec3& p, void*)
 {
-	return turbulence1(p * 10.0f, m_data.octaves);
+	// Shaderで参照する情報.
+	CMoveTextureSolidShaderData data;
+	try {
+		ShaderInfoC* shaderInfo = (ShaderInfoC *)(get_shader_info());
+		if (shaderInfo) {
+			if ((shaderInfo->magic_number()) == SOLIDTEXTURE_SHADER_MAGIC_NUMBER) data = shaderInfo->data;
+		}
+	} catch (...) { }
+
+	const float scale = m_getScale(p, data);
+	return turbulence1(p * scale, data.octaves);
 }
 
 /**
@@ -52,7 +85,6 @@ void CSolidTextureShaderInterface::shade (void *)
 			if ((shaderInfo->magic_number()) == SOLIDTEXTURE_SHADER_MAGIC_NUMBER) data = shaderInfo->data;
 		}
 	} catch (...) { }
-	m_data = data;
 
 	const sxsdk::vec3 p = get_P();
 	sxsdk::vec3 p2 = p;
@@ -62,7 +94,8 @@ void CSolidTextureShaderInterface::shade (void *)
 		p2 += ((-data.moveV * m_currentFrame) / (float)m_frameRate) * m_solidScaleV;
 	}
 
-	const float eVal = turbulence1(p2 * 10.0f, data.octaves);
+	const float scale = m_getScale(p, data);
+	const float eVal = turbulence1(p2 * scale, data.octaves);
 
 	set_Ci(lerp(get_Cs(), get_mapping_color(), eVal));
 }
@@ -81,7 +114,6 @@ void CSolidTextureShaderInterface::bump (void*)
 			if ((shaderInfo->magic_number()) == SOLIDTEXTURE_SHADER_MAGIC_NUMBER) data = shaderInfo->data;
 		}
 	} catch (...) { }
-	m_data = data;
 
 	const sxsdk::vec3 p = get_P();
 	sxsdk::vec3 p2 = p;
@@ -182,6 +214,19 @@ bool CSolidTextureShaderInterface::respond (sxsdk::dialog_interface &d, sxsdk::d
 		return true;
 	}
 
+	if (id == dlg_scale_height_id) {
+		m_data.scaleHeight = item.get_float();
+		return true;
+	}
+	if (id == dlg_scale_pow_id) {
+		m_data.scalePow = item.get_float();
+		return true;
+	}
+	if (id == dlg_scale_value_id) {
+		m_data.scaleValue = item.get_float();
+		return true;
+	}
+
 	return false;
 }
 
@@ -199,6 +244,22 @@ void CSolidTextureShaderInterface::load_dialog_data (sxsdk::dialog_interface &d,
 		sxsdk::dialog_item_class* item;
 		item = &(d.get_dialog_item(dlg_moveV_id));
 		item->set_vec3(m_data.moveV);
+	}
+
+	{
+		sxsdk::dialog_item_class* item;
+		item = &(d.get_dialog_item(dlg_scale_height_id));
+		item->set_float(m_data.scaleHeight);
+	}
+	{
+		sxsdk::dialog_item_class* item;
+		item = &(d.get_dialog_item(dlg_scale_pow_id));
+		item->set_float(m_data.scalePow);
+	}
+	{
+		sxsdk::dialog_item_class* item;
+		item = &(d.get_dialog_item(dlg_scale_value_id));
+		item->set_float(m_data.scaleValue);
 	}
 }
 

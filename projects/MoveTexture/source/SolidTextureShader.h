@@ -33,6 +33,11 @@ private:
 		return (b - a) * t + a;
 	}
 
+	/**
+	 * pの高さにより、乗算するスケール値を取得.
+	 */
+	float m_getScale (const sxsdk::vec3& p, const CMoveTextureSolidShaderData& data);
+
 private:
 	virtual sx::uuid_class get_uuid (void *) { return SOLIDTEXTURE_SHADER_ID; }
 	virtual int get_shade_version () const { return SHADE_BUILD_NUMBER; }
