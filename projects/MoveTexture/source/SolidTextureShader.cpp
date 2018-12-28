@@ -33,6 +33,7 @@ sxsdk::shader_info_base_class *CSolidTextureShaderInterface::new_shader_info (sx
 	CMoveTextureSolidShaderData data;
 	if (stream) {
 		StreamCtrl::LoadSolidTextureShaderData(stream, data);
+		data.scaleValue = std::max(data.scaleValue, 0.01f);
 	}
 
 	return new ShaderInfoC(data);
@@ -47,11 +48,13 @@ float CSolidTextureShaderInterface::m_getScale (const sxsdk::vec3& p, const CMov
 	float scale = 10.0f;
 	if (data.scaleValue != 1.0f) {
 		const float fMin = (float)(1e-3);
-		if (p.y >= 0.0f && p.y < data.scaleHeight) {
-			float fV = std::pow(p.y / data.scaleHeight, data.scalePow);
-			scale /= std::max(fMin, 1.0f * (1.0f - fV) + (data.scaleValue * fV));
-		} else if (p.y >= data.scaleHeight) {
-			scale /= std::max(fMin, data.scaleValue);
+		const float py = p.y / m_solidScaleV;
+		const float scale2 = scale / data.scaleValue;
+		if (py >= 0.0f && py < data.scaleHeight) {
+			float fV = std::pow(py / data.scaleHeight, data.scalePow);
+			scale = scale * (1.0f - fV) + scale2 * fV;
+		} else if (py >= data.scaleHeight) {
+			scale = scale2;
 		}
 	}
 	return scale;

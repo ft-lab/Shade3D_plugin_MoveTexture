@@ -7,5 +7,12 @@
 			</vbox>
 		</group>
 		<vec3 id="201" label="Amount of movement" unit="Local Coordinate/Second" />
+
+		<group label="Scale adjustment">
+			<float id="202" label="Height" unit="mm" />
+			<float id="203" label="Power" />
+			<float id="204" label="Scale Value" />
+		</group>
+
 	</vbox>
 </dialog>
